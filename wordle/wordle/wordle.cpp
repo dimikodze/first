@@ -4,9 +4,20 @@
 using namespace std;
 
 
-void make_riddle(string* w) {
-    cin >> *w;
+string make_riddle() {
+    int d = 0;
+    string w;
+    do {
+        cin >> w;
+        string r = w;
+        for (int j = 0; j < r.size(); j++) {
+            if (isalpha(r[j])) {
+                d++;
+            }
+        }
+    } while (d != w.size());
     cout << "\033[3J\033[2J\033[H" << flush;
+    return w;
 }
 
 
@@ -14,8 +25,8 @@ void make_riddle(string* w) {
 int main(int argc, char* argv[])
 {
     string riddled_word;
-    make_riddle(&riddled_word);
+    riddled_word = make_riddle();
     system("cls");
-    cout << riddled_word.size() << " letters" << endl;
+
     guess(riddled_word);
 }
