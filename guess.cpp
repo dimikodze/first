@@ -1,5 +1,6 @@
 #include <iostream>
 #include "C:\Users\Dimikodze\source\repos\Wordle\consts.cpp"
+#include "C:\Users\Dimikodze\source\repos\Wordle\checkSyms.cpp"
 #include <cctype>
 
 using namespace std;
@@ -9,16 +10,15 @@ void guess(string rid) {
     int b = 0;
     string gue;
     for (int i = 0; i < rid.size() * 2; i++) {
-        int d = 0;
-        do  {
-            cout << rid.size() << " latin letters" << endl;
+        bool c = 1;
+        cout << rid.size() << " latin letters" << endl;
+        do {
             cin >> gue;
-            for(int j = 0; j < gue.size(); j++){
-                if (gue.size() == rid.size() && isalpha(gue[j])) {
-                    d++;
-                }
+            if (gue.size() == rid.size() && checkSyms(gue) == 0) {
+                c = 0;
             }
-        } while (d != gue.size());
+        } while (c);
+
         for (int j = 0; j < rid.size(); j++) {
             if (gue[j] == rid[j]) {
                 cout << G << gue[j];

@@ -7,15 +7,10 @@ using namespace std;
 string make_riddle() {
     int d = 0;
     string w;
+    cout << "latin letters" << endl;
     do {
         cin >> w;
-        string r = w;
-        for (int j = 0; j < r.size(); j++) {
-            if (isalpha(r[j])) {
-                d++;
-            }
-        }
-    } while (d != w.size());
+    } while (checkSyms(w));
     cout << "\033[3J\033[2J\033[H" << flush;
     return w;
 }
